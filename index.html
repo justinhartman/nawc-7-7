@@ -31,7 +31,7 @@
         // Create and return simple linear gauge
         function drawLinearGauge(value) {
             var gauge = anychart.gauges.linear();
-            gauge.data([value]).padding(10, 0, 30, 0);
+            gauge.data([value]).padding(0, 0, 30, 0);
             gauge
                 .tooltip()
                 .useHtml(true)
@@ -56,7 +56,9 @@
             return gauge;
         }
 
-        // Set the total value for the gauge
+        // 
+        // UPDATE and Set the total value for the gauge here.
+        // 
         var dailyTotal = 1386;
 
         // Create gauge with extra axis
@@ -72,7 +74,7 @@
             .useHtml(true)
             .format(function() {
                 return (
-                    '<span style="color:#dd2c00;">R' + this.value + '</span>'
+                    '<span style="color:#999;">R' + this.value + '</span>'
                 );
             });
 
@@ -88,13 +90,13 @@
         // Put thermometers into the layout table
         layoutTable.contents([
             ['7=7 Contribution Tracker'],
-            ['Daily Contributions'],
+            [null],
             [multiAxisGauge]
         ]);
 
         // Set height for first row in layout table
-        layoutTable.getRow(0).height(40).fontSize(18);
-        layoutTable.getRow(1).height(80).fontSize(14);
+        layoutTable.getRow(0).height(0).fontSize(20);
+        layoutTable.getRow(1).height(50).fontSize(14);
 
         // Merge cells in layout table where needed
         layoutTable.getCell(0, 0).colSpan(3);

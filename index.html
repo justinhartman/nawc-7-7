@@ -42,6 +42,8 @@
                     }
                 });
 
+            gauge.palette(['#32CD32']);
+
             // Set scale settings
             var scale = gauge.scale();
             scale.minimum(0).maximum(10000).ticks({ interval: 1000 });
@@ -61,9 +63,11 @@
         // 
         var dailyTotal = 950+436+805+1758+1058+638+1248;
 
-        // Create gauge with extra axis
+        // Create gauge axis
         var multiAxisGauge = drawLinearGauge(dailyTotal);
         var multiAxisThermometer = multiAxisGauge.thermometer(0);
+        // Add the pallet colours
+        multiAxisGauge.palette();
         multiAxisThermometer.name('Total Contributions').id('1');
 
         // Add left axis with custom labels
@@ -78,7 +82,7 @@
                 );
             });
 
-        // Create table to place thermometers
+        // Create table to place thermometer
         var layoutTable = anychart.standalones.table();
         layoutTable
             .hAlign('center')
